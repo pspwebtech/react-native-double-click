@@ -56,7 +56,7 @@ class DoubleClicker extends Component {
 
 	render() {
 		return (
-			<View {...this.myPanResponder.panHandlers}>
+			<View {...this.myPanResponder.panHandlers} {...this.props}>
 				{this.props.children}
 			</View>
 		);
