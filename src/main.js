@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
 	View,
@@ -6,7 +6,7 @@ import {
 	Alert,
 } from 'react-native';
 
-class DoubleClicker extends Component {
+class DoubleClicker extends React.PureComponent {
 	constructor() {
 		super();
 
