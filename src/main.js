@@ -44,7 +44,7 @@ class DoubleClicker extends Component {
 		const currentTouchTimeStamp = Date.now();
 
 		if ( this.isDoubleTap(currentTouchTimeStamp, gestureState) ) {
-			this.props.onClick();
+			this.props.onClick(evt, gestureState);
 		}
 
 		this.prevTouchInfo = {
