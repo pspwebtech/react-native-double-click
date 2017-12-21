@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
 	View,
 	PanResponder,
 	Alert,
 } from 'react-native';
 
-class DoubleClicker extends Component {
+class DoubleClicker extends React.PureComponent {
 	constructor() {
 		super();
 
@@ -34,7 +35,7 @@ class DoubleClicker extends Component {
 	isDoubleTap(currentTouchTimeStamp, {x0, y0}) {
 		const { prevTouchX, prevTouchY, prevTouchTimeStamp } = this.prevTouchInfo;
 		const dt = currentTouchTimeStamp - prevTouchTimeStamp;
-		const { delay, radius} = this.props; 
+		const { delay, radius} = this.props;
 
 		return ( dt < delay && this.distance(prevTouchX, prevTouchY, x0, y0) < radius );
 	}
@@ -43,7 +44,7 @@ class DoubleClicker extends Component {
 		const currentTouchTimeStamp = Date.now();
 
 		if ( this.isDoubleTap(currentTouchTimeStamp, gestureState) ) {
-			this.props.onClick();
+			this.props.onClick(evt, gestureState);
 		}
 
 		this.prevTouchInfo = {
@@ -55,7 +56,7 @@ class DoubleClicker extends Component {
 
 	render() {
 		return (
-			<View {...this.myPanResponder.panHandlers}>
+			<View {...this.myPanResponder.panHandlers} {...this.props}>
 				{this.props.children}
 			</View>
 		);
